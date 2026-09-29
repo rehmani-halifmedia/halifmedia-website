@@ -1,110 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Halif Media</title>
-<meta name="description" content="Halif Media — an influencer partnerships agency. New site coming soon.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700&family=Source+Sans+3:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --charcoal: #28282A;
-    --cream: #FBFAF8;
-    --burgundy: #7A3B4E;
-    --greige: #E4E1DC;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halif Media</title>
+  <meta name="description"
+    content="Halif Media is a partnerships-first influencer marketing agency for education-focused creators. Building long-term, high-value brand partnerships rooted in trust and clarity.">
 
-  * { box-sizing: border-box; }
+  <!-- Favicon / Page Logo Icon (Adaptive Light & Dark Themes) -->
+  <link rel="icon" type="image/svg+xml" href="assets/hm-icon-light.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="assets/hm-icon-dark.svg" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/svg+xml" href="assets/hm-icon-light.svg">
+  <link rel="apple-touch-icon" href="assets/hm-icon-light.svg">
 
-  html, body {
-    margin: 0;
-    height: 100%;
-  }
+  <!-- Google Fonts: Unbounded Bold (700) for titles & headings, Source Sans 3 for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=Unbounded:wght@700&display=swap"
+    rel="stylesheet">
 
-  body {
-    background: var(--charcoal);
-    color: var(--cream);
-    font-family: 'Source Sans 3', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .wrap {
-    max-width: 560px;
-    text-align: center;
-  }
-
-  .mark {
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: clamp(1.6rem, 5vw, 2.4rem);
-    letter-spacing: 0.02em;
-    margin: 0 0 22px;
-  }
-
-  .rule {
-    width: 44px;
-    height: 3px;
-    background: var(--burgundy);
-    margin: 0 auto 22px;
-    border-radius: 2px;
-  }
-
-  .status {
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 600;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--greige);
-    margin: 0 0 20px;
-  }
-
-  .tagline {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: var(--greige);
-    max-width: 44ch;
-    margin: 0 auto 34px;
-  }
-
-  .contact {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.98rem;
-  }
-
-  .contact a {
-    color: var(--cream);
-    text-decoration: none;
-    border-bottom: 1px solid var(--burgundy);
-    padding-bottom: 2px;
-  }
-
-  .contact a:hover { color: var(--burgundy); }
-
-  footer {
-    margin-top: 46px;
-    font-size: 0.82rem;
-    color: rgba(251, 250, 248, 0.45);
-  }
-</style>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-  <div class="wrap">
-    <h1 class="mark">Halif Media</h1>
-    <div class="rule"></div>
-    <p class="status">New site coming soon</p>
-    <p class="tagline">We help brands expand their reach through the right creators, and deliver the partnership deals that make it real.</p>
-    <p class="contact">Get in touch — <a href="mailto:rehmani@meethalif.com">rehmani@meethalif.com</a></p>
-    <footer>Halif Media © 2026</footer>
+  <!-- Editorial Scroll Reading Progress Bar -->
+  <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
+
+  <!-- Minimal Backdrop Overlay for Menu Drawer -->
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+
+  <!-- Minimal Editorial Navigation Drawer -->
+  <aside class="menu-drawer" id="menuDrawer" aria-hidden="true" role="dialog" aria-label="Navigation Menu">
+    <div class="menu-drawer-header">
+      <div class="menu-brand">
+        <img src="assets/hm-logo.svg" alt="Halif Media" class="menu-logo" width="145" height="60">
+      </div>
+      <button class="menu-close-btn" id="menuCloseBtn" aria-label="Close navigation menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="menu-drawer-body">
+      <nav class="drawer-nav">
+        <a href="#hero" class="drawer-nav-link" data-index="01">Home</a>
+        <a href="#what-we-do" class="drawer-nav-link" data-index="02">What We Do</a>
+        <a href="#about-us" class="drawer-nav-link" data-index="03">About Us</a>
+        <a href="#contact" class="drawer-nav-link" data-index="04">Contact</a>
+      </nav>
+      <div class="drawer-footer">
+        <div class="drawer-tagline">Partnerships-first influencer marketing for education creators.</div>
+        <a href="mailto:hello@halifmedia.com" class="drawer-email">hello@halifmedia.com</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================================= -->
+  <!-- HERO SECTION (DARK #28282A, ~90-100vh)                    -->
+  <!-- ========================================================= -->
+  <header class="hero-section" id="hero">
+    <!-- Top Navigation (Fashion Studio Editorial Nav) -->
+    <nav class="top-nav" aria-label="Main Navigation">
+      <div class="nav-left">
+        <a href="#hero" class="nav-brand-link" aria-label="Halif Media Home">
+          <img src="assets/hm-logo.svg" alt="Halif Media" class="nav-logo" width="170" height="70">
+        </a>
+      </div>
+      <div class="nav-right">
+        <div class="nav-desktop-links">
+          <a href="#what-we-do" class="nav-desk-link">What We Do</a>
+          <a href="#about-us" class="nav-desk-link">About Us</a>
+        </div>
+        <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Open navigation menu" aria-expanded="false"
+          aria-controls="menuDrawer">
+          <span class="menu-btn-label">MENU</span>
+          <span class="menu-bars" aria-hidden="true">
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+          </span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Content Main Grid (Asymmetric Editorial Poster) -->
+    <div class="hero-container">
+      <!-- Left Column: Editorial Copy -->
+      <div class="hero-copy-col">
+        <!-- Eyebrow -->
+        <div class="hero-eyebrow" id="heroEyebrow">
+          <span class="eyebrow-text">HALIF MEDIA</span>
+          <span class="eyebrow-line" aria-hidden="true"></span>
+        </div>
+
+        <!-- Headline (Unbounded Bold, Uppercase) -->
+        <h1 class="hero-headline" id="heroHeadline">
+          <span class="headline-line line-1">WE CREATE</span>
+          <span class="headline-line line-2">PARTNERSHIPS</span>
+          <span class="headline-line line-3">THAT LAST<span class="burgundy-dot">.</span></span>
+        </h1>
+
+        <!-- Supporting Copy -->
+        <div class="hero-descriptions" id="heroDesc">
+          <p class="hero-sub-text">
+            We prioritize trust at the core of every connection, and build partnerships that reflect honesty as a brand.
+          </p>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="hero-cta-wrap" id="heroCtaWrap">
+          <a href="#contact" class="btn-burgundy hero-cta" id="heroCtaBtn">
+            <span>Get in touch</span>
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Founder Visual Presentation -->
+      <div class="hero-visual-col" id="heroVisualCol">
+        <div class="hero-visual-stage">
+          <!-- Founder Composition: photo with name & title at bottom -->
+          <div class="hero-founder-composition">
+            <div class="founder-photo-card">
+              <div class="founder-photo-frame">
+                <img src="assets/rehmani-pic.jpeg"
+                  alt="Rehmani — Founder, Halif Media"
+                  class="founder-photo-img" width="540" height="680" loading="eager">
+                <div class="founder-accent-dot" aria-hidden="true"></div>
+                <div class="founder-accent-ring" aria-hidden="true"></div>
+              </div>
+              <div class="founder-caption">
+                <span class="founder-name">Rehmani</span>
+                <span class="founder-title">Founder</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Architectural Curved Transition (Hero dipping into What We Do) -->
+  <div class="hero-curved-transition" aria-hidden="true">
+    <svg class="hero-transition-svg" viewBox="0 0 1440 140" fill="none" preserveAspectRatio="none">
+      <path d="M0,-2 L0,0 C380,140 1060,140 1440,0 L1440,-2 Z" fill="#28282A" />
+    </svg>
   </div>
 
+  <main>
+    <!-- ========================================================= -->
+    <!-- SECTION: WHAT WE DO (LIGHT #FBFAF8)                       -->
+    <!-- Editorial Index / Service Architecture                    -->
+    <!-- ========================================================= -->
+    <section class="section-what-we-do" id="what-we-do">
+      <div class="section-container">
+        <!-- Section Header / Eyebrow -->
+        <div class="section-header reveal-on-scroll">
+          <div class="editorial-eyebrow">
+            <span class="eyebrow-index">01</span>
+            <span class="eyebrow-text">WHAT WE DO</span>
+            <span class="eyebrow-line-dark" aria-hidden="true"></span>
+
+          </div>
+          <h2 class="editorial-lead-statement">
+            Finding the right pairing is our anchor. So we broker the deal on honest numbers, and handle everything around it from start to finish.
+          </h2>
+        </div>
+
+        <!-- Vertically Structured Editorial Service Index (Not generic cards) -->
+        <div class="services-index" id="servicesIndex">
+          <!-- Service 01: Matching -->
+          <article class="service-row reveal-on-scroll" data-index="01">
+            <div class="service-row-left">
+              <span class="service-row-num">01</span>
+              <h3 class="service-row-title">Matching</h3>
+            </div>
+            <div class="service-row-right">
+              <p class="service-row-desc">
+                Creators whose audience genuinely fits the product, from a roster we know personally, not a database.
+              </p>
+            </div>
+          </article>
+
+          <!-- Service 02: Honest pricing -->
+          <article class="service-row reveal-on-scroll" data-index="02">
+            <div class="service-row-left">
+              <span class="service-row-num">02</span>
+              <h3 class="service-row-title">Honest pricing</h3>
+            </div>
+            <div class="service-row-right">
+              <p class="service-row-desc">
+                Every rate built on actual views and real audience data. Nobody overpays, nobody gets underpaid.
+              </p>
+            </div>
+          </article>
+
+          <!-- Service 03: Good-faith negotiation -->
+          <article class="service-row reveal-on-scroll" data-index="03">
+            <div class="service-row-left">
+              <span class="service-row-num">03</span>
+              <h3 class="service-row-title">Good-faith negotiation</h3>
+            </div>
+            <div class="service-row-right">
+              <p class="service-row-desc">
+                At the core of our system, all negotiations on real numbers only, never inflated figures or invented competing offers.
+              </p>
+            </div>
+          </article>
+
+          <!-- Service 04: Contracts, payments and admin -->
+          <article class="service-row reveal-on-scroll" data-index="04">
+            <div class="service-row-left">
+              <span class="service-row-num">04</span>
+              <h3 class="service-row-title">Contracts, payments and admin</h3>
+            </div>
+            <div class="service-row-right">
+              <p class="service-row-desc">
+                Clear agreements that protect both parties, invoicing and payout on schedule, paperwork kept out of everybody's way.
+              </p>
+            </div>
+          </article>
+
+          <!-- Service 05: Follow-up -->
+          <article class="service-row reveal-on-scroll" data-index="05">
+            <div class="service-row-left">
+              <span class="service-row-num">05</span>
+              <h3 class="service-row-title">Follow-up</h3>
+            </div>
+            <div class="service-row-right">
+              <p class="service-row-desc">
+                Every partnership tracked until both sides have delivered.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architectural Curved Transition (What We Do dipping into About Us) -->
+    <div class="section-curved-transition" aria-hidden="true">
+      <svg class="section-transition-svg" viewBox="0 0 1440 140" fill="none" preserveAspectRatio="none">
+        <path d="M0,-2 L0,0 C380,140 1060,140 1440,0 L1440,-2 Z" fill="#FBFAF8" />
+        <path d="M0,0 C380,140 1060,140 1440,0" stroke="rgba(40, 40, 42, 0.08)" stroke-width="1.5" fill="none" />
+      </svg>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- SECTION: ABOUT US + CONTACT (WARM LIGHT #FBFAF8 / #E4E1DC)-->
+    <!-- Asymmetric Editorial Spread                               -->
+    <!-- ========================================================= -->
+    <section class="section-about-contact" id="about-us">
+      <div class="section-container">
+        <!-- Section Eyebrow -->
+        <div class="editorial-eyebrow reveal-on-scroll">
+          <span class="eyebrow-index">02</span>
+          <span class="eyebrow-text">ABOUT US</span>
+          <span class="eyebrow-line-dark" aria-hidden="true"></span>
+          <span class="eyebrow-tag" aria-hidden="true">AGENCY PROFILE / 2026</span>
+        </div>
+
+        <div class="about-contact-grid">
+
+          <!-- Left Column: About Us Narrative -->
+          <div class="about-narrative-col reveal-on-scroll">
+            <div class="about-text-content">
+              <p class="about-primary-text">
+                Halif Media is a boutique influencer marketing agency. We pair brands with creators we curate personally, and we handle the deal from first introduction to final payment. That means assessing the creator's metrics, demographics, ideal fit and potential avenues for brand deals.
+              </p>
+
+              <div class="about-quiet-block">
+                <p class="about-quiet-text">
+                  We are just starting out but what we lack in history, we make up for in clarity and intention to do this for a long time.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Contact / Submission Form -->
+          <div class="contact-card-col reveal-on-scroll" id="contact">
+            <div class="contact-card" id="contactContainer">
+              <div class="contact-card-header">
+                <div class="contact-eyebrow">
+                  <span class="contact-eyebrow-text">CONTACT US</span>
+                  <span class="contact-eyebrow-line" aria-hidden="true"></span>
+                </div>
+                <h3 class="contact-heading">Get in touch</h3>
+              </div>
+
+              <!-- Interactive Contact Form matching screenshot -->
+              <form class="contact-form" id="contactForm" novalidate>
+                <div class="form-group">
+                  <label for="userName" class="form-label">Name/Company name</label>
+                  <input type="text" id="userName" name="name" class="form-input" placeholder="Your name or company name" required
+                    autocomplete="name">
+                  <span class="form-error" id="nameError" aria-live="polite"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="userEmail" class="form-label">Email address</label>
+                  <input type="email" id="userEmail" name="email" class="form-input" placeholder="you@something.com"
+                    required autocomplete="email">
+                  <span class="form-error" id="emailError" aria-live="polite"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="userMessage" class="form-label">Tell us more</label>
+                  <textarea id="userMessage" name="message" class="form-textarea" rows="4"
+                    placeholder="Tell us about your goals, needs, or what you're looking for..." required></textarea>
+                  <span class="form-error" id="messageError" aria-live="polite"></span>
+                </div>
+
+                <div class="form-submit-error" id="submitError" role="alert" style="display: none; color: #a12b42; font-size: 0.85rem; text-align: center; margin-top: 0.25rem;"></div>
+
+                <button type="submit" class="btn-burgundy form-submit-btn" id="submitBtn">
+                  <span>Get in touch</span>
+                  <span class="btn-arrow" aria-hidden="true">→</span>
+                </button>
+              </form>
+
+              <!-- In-place Confirmation State (Hidden initially) -->
+              <div class="confirmation-state" id="confirmationState" aria-hidden="true" style="display: none;">
+                <div class="confirmation-icon" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7A3B4E" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <h4 class="confirmation-headline">Thank you. We will be in touch.</h4>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- FOOTER RIBBON (DARK #28282A)                              -->
+  <!-- ========================================================= -->
+  <footer class="footer-section">
+    <div class="footer-container footer-ribbon">
+      <div class="footer-brand-wrap">
+        <a href="#hero" class="footer-brand" aria-label="Return to top">
+          <img src="assets/hm-logo.svg" alt="Halif Media Logo" class="footer-logo" width="160" height="66">
+        </a>
+      </div>
+      <div class="footer-center">
+        <span class="footer-copyright"><span class="footer-brand-name">Halif Media</span> © 2026</span>
+      </div>
+      <div class="footer-action">
+        <a href="#hero" class="footer-top-link" aria-label="Scroll back to top">
+          Back to top ↑
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
+
 </html>
